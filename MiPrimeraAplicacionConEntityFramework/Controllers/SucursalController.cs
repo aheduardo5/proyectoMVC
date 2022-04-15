@@ -27,5 +27,38 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
             }
             return View(listaSucursal);
         }
+
+        //Action to create a new View
+        public ActionResult Agregar()
+        {
+            return View();
+        }
+
+        //HTTP POST
+        [HttpPost]
+        public ActionResult Agregar(SucursalCLS oSucursalCLS)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(oSucursalCLS); //Le pasamos el modelo oSucursalCLS por si llega a ser invalido los datos no se borren
+            }
+            else
+            {
+                using (var bd = new BDPasajeEntities())
+                {
+                    Sucursal oSucursal = new Sucursal();
+                    oSucursal.NOMBRE = oSucursalCLS.nombre;
+                    oSucursal.DIRECCION = oSucursalCLS.direccion;
+                    oSucursal.TELEFONO = oSucursalCLS.telefono;
+                    oSucursal.EMAIL = oSucursalCLS.email;
+                    oSucursal.FECHAAPERTURA = oSucursalCLS.fechaApertura;
+                    oSucursal.BHABILITADO = 1;
+                    bd.Sucursal.Add(oSucursal);
+                    bd.SaveChanges();
+                   
+                }
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
