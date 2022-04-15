@@ -29,37 +29,6 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
             return View(listaCliente);
         }
 
-        public ActionResult Agregar()
-        {
-            return View();
-        }
-        
-        [HttpPost]
-        public ActionResult Agregar(ClienteCLS oClienteCLS)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(oClienteCLS);
-            }
-            else
-            {
-                using (var bd = new BDPasajeEntities())
-                {
-                    Cliente oCliente = new Cliente();
-                    oCliente.NOMBRE = oClienteCLS.nombre;
-                    oCliente.APPATERNO = oClienteCLS.appaterno;
-                    oCliente.APMATERNO = oClienteCLS.apmaterno;
-                    oCliente.EMAIL = oClienteCLS.email;
-                    oCliente.DIRECCION = oClienteCLS.direccion;
-                    oCliente.TELEFONOFIJO = oClienteCLS.telefonofijo;
-                    oCliente.TELEFONOCELULAR = oClienteCLS.telefonocelular;
-                    oCliente.BHABILITADO = 1;
-                    oCliente.TIPOUSUARIO = "C";
-                    bd.Cliente.Add(oCliente);
-                    bd.SaveChanges();
-                }
-            }
-            return RedirectToAction("Index");
-        }
+     
     }
 }
