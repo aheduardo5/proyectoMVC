@@ -1,0 +1,44 @@
+﻿@using MiPrimeraAplicacionConEntityFramework.Models
+@model   SucursalCLS
+@{
+    ViewBag.Title = "Agregar";
+}
+
+<h2>Agregar Sucursal</h2>
+
+<div class="row card p-3">
+    @using (Html.BeginForm("Agregar", "Sucursal", FormMethod.Post))
+    {
+        <div class="col-md-6">
+            @Html.LabelFor(p => p.nombre)
+            @Html.TextBoxFor(p => p.nombre, new { @class = "form-control" })
+            @Html.ValidationMessage("nombre", new { @class="text-danger"})
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(p => p.direccion)
+            @Html.TextBoxFor(p => p.direccion, new { @class = "form-control" })
+
+            @Html.ValidationMessage("direccion", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(p => p.telefono)
+            @Html.TextBoxFor(p => p.telefono, new { @class = "form-control" })
+            @Html.ValidationMessage("telefono", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(p => p.email)
+            @Html.TextBoxFor(p => p.email, new { @class = "form-control" })
+            @Html.ValidationMessage("email", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(p=>p.fechaApertura)
+            @Html.EditorFor(p=>p.fechaApertura, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+        <br />
+        <div class="col-md-4 mt-3">
+            <input type="submit" class="btn btn-primary" value="Agregar Sucursal"/>
+        </div>
+    }
+
+</div>
