@@ -1,0 +1,34 @@
+﻿@using MiPrimeraAplicacionConEntityFramework.Models;
+@model  List<ClienteCLS>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td width="10%">@Html.LabelFor(p => Model[0].iidcliente)</td>
+            <td width="20%">@Html.LabelFor(p => Model[0].nombre)</td>
+            <td width="20%">@Html.LabelFor(p => Model[0].appaterno)</td>
+            <td>@Html.LabelFor(p => Model[0].apmaterno)</td>
+            <td>@Html.LabelFor(p=> Model[0].telefonofijo)</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.iidcliente</td>
+                <td>@item.nombre</td>
+                <td>@item.appaterno</td>
+                <td>@item.apmaterno</td>
+                <td>@item.telefonofijo</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("Agregar Cliente", "Agregar", "Cliente",null, new { @class="btn btn-primary"})
