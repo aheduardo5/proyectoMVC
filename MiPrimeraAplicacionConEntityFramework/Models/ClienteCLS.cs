@@ -31,9 +31,12 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
         [Required]
         [StringLength(200, ErrorMessage = "Solamente se permiten 200 caracteres")]
         public string direccion { get; set; }
+        [Display(Name ="Sexo")]
+        [Required]
         public int iidsexo { get; set; }
         [Display(Name = "Telefono Fijo")]
         [StringLength(10, ErrorMessage = "Solamente se permiten 10 caracteres")]
+        [Required]
         public string telefonofijo { get; set; }
         [Display(Name = "Telefono Celular")]
         [Required]
