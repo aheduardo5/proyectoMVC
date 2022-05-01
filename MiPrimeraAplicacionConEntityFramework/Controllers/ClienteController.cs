@@ -53,8 +53,6 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
             return View();
         }
 
-      
-
         [HttpPost]
         public ActionResult Agregar(ClienteCLS oClienteCLS)
         {
@@ -84,7 +82,6 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
             }
             return RedirectToAction("Index");
         }
-
 
     }
 }
