@@ -37,7 +37,10 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
 
         //Propiedades adicionales -- la que se van a trabajar con los joins
 
+        [Display(Name ="Tipo Contrato")]
         public string nombreTipoContrato { get; set; }
+
+        [Display(Name ="Tipo Usuario")]
         public string nombreTipoUsuario { get; set; }
 
     }

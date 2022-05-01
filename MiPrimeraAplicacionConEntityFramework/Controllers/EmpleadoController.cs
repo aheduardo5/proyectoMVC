@@ -29,7 +29,7 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
                                      nombreTipoContrato = tipoContrato.NOMBRE
                                  }).ToList();
             }
-            return View();
+            return View(listaEmpleado);
         }
     }
 }

@@ -17,14 +17,14 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>@item.iidsucursal</td>
-            <td>@item.nombre</td>
-            <td>@item.telefono</td>
-            <td>@item.email</td>
-        </tr>
+            <tr>
+                <td>@item.iidsucursal</td>
+                <td>@item.nombre</td>
+                <td>@item.telefono</td>
+                <td>@item.email</td>
+            </tr>
 
-    }
-        </tbody>
-    </table>
-@Html.ActionLink("Agregar Sucursal", "Agregar", "Sucursal", null, new { @class="btn btn-primary"})
+        }
+    </tbody>
+</table>
+@Html.ActionLink("Agregar Sucursal", "Agregar", "Sucursal", null, new { @class = "btn btn-primary" })
