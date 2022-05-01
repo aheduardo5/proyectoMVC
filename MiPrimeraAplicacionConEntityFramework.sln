@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.32407.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiPrimeraAplicacionConEntityFramework", "MiPrimeraAplicacionConEntityFramework\MiPrimeraAplicacionConEntityFramework.csproj", "{D917A6E9-0024-42E2-94F9-7D6632D6586D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bd", "bd", "{CDFA81BB-208C-4CFA-9690-DBD4C99B98F5}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\AppData\Local\Temp\Rar$DRa17420.10664\BDPasaje.bak = ..\..\..\AppData\Local\Temp\Rar$DRa17420.10664\BDPasaje.bak
+		README BD.md = README BD.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
