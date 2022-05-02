@@ -8,6 +8,8 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
 {
     public class EmpleadoCLS
     {
+
+        public int iidTipoUsuario { get; set; }
         [Display(Name ="Id Usuario")]
         public int iidEmpleado { get; set; }
         [Display(Name ="Nombre")]
@@ -27,6 +29,10 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime fechaContrato { get; set; }
+        [Display(Name ="Sueldo Empleado")]
+        [Required]
+        [Range(0,100000, ErrorMessage ="El sueldo no puede exceder de 100000")]
+        public double sueldo { get; set; }
         [Display(Name ="Tipo Contrato")]
         [Required]
         public int iidtipoContrato {get; set;}

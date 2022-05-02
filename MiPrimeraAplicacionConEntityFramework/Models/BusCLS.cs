@@ -16,6 +16,10 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
         [Display(Name = "Nombre Tipo Bus")]
         [Required]
         public int iidTipoBus { get; set; }
+        [Display(Name ="Placa")]
+        [Required]
+        [StringLength(100, ErrorMessage ="Longitud Maxima de 100 Caracteres")]
+        public string placa { get; set; }
         [Display(Name = "Fecha Compra")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -46,11 +50,11 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
 
         //Propiedades adicionales
         [Display(Name ="Nombre Sucursal")]
-        public int nombreSucursal { get; set; }
+        public string nombreSucursal { get; set; }
         [Display(Name = "Nombre Tipo Bus")]
-        public int nombreTipoBus { get; set; }
+        public string nombreTipoBus { get; set; }
         [Display(Name = "Nombre Modelo")]
-        public int nombreModelo { get; set; }
+        public string nombreModelo { get; set; }
 
 
     }

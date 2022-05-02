@@ -120,9 +120,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BusController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\MarcaController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
+    <Compile Include="Controllers\ViajeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -210,6 +212,7 @@
     <Compile Include="Models\Viaje.cs">
       <DependentUpon>BDPasajes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViajeCLS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +325,9 @@
     <Content Include="Views\Cliente\Agregar.cshtml" />
     <Content Include="Views\Sucursal\Agregar.cshtml" />
     <Content Include="Views\Empleado\Index.cshtml" />
+    <Content Include="Views\Bus\Index.cshtml" />
+    <Content Include="Views\Viaje\Index.cshtml" />
+    <Content Include="Views\Empleado\Agregar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
