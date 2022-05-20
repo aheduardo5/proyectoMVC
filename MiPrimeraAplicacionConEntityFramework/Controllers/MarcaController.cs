@@ -33,6 +33,19 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
             return View();
         }
 
+        public ActionResult Editar(int id) 
+        {
+            MarcaCLS oMarcaCLS = new MarcaCLS();
+            using (var bd = new BDPasajeEntities())
+            {
+                Marca oMarca = bd.Marca.Where(p => p.IIDMARCA.Equals(id)).First();
+                oMarcaCLS.iidmarca = oMarca.IIDMARCA;
+                oMarcaCLS.nombre = oMarca.NOMBRE;
+                oMarcaCLS.descripcion = oMarca.DESCRIPCION;
+            }
+                return View(oMarcaCLS);
+        }
+
         [HttpPost] // Hace la insercion de datos
         public ActionResult Agregar(MarcaCLS oMarcaCLS) //Se agrega el modelo y nombre del modelo
         {

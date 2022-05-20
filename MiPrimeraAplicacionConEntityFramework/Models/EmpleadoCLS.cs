@@ -11,6 +11,7 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
 
         public int iidTipoUsuario { get; set; }
         [Display(Name ="Id Usuario")]
+        [Required]
         public int iidEmpleado { get; set; }
         [Display(Name ="Nombre")]
         [Required]
@@ -32,7 +33,7 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
         [Display(Name ="Sueldo Empleado")]
         [Required]
         [Range(0,100000, ErrorMessage ="El sueldo no puede exceder de 100000")]
-        public double sueldo { get; set; }
+        public decimal sueldo { get; set; }
         [Display(Name ="Tipo Contrato")]
         [Required]
         public int iidtipoContrato {get; set;}

@@ -93,9 +93,34 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
             listarTipoContrato();
             listarTipoUsuario();
         }
+
         [HttpPost]
+        public ActionResult Agregar(EmpleadoCLS oEmpleadoCLS)
+        {
+            if (!ModelState.IsValid)
+            {
+                listarCombos();
+                return View(oEmpleadoCLS);
+            }
+            using (var bd = new BDPasajeEntities())
+            {
+                Empleado oEmpleado = new Empleado();
+                oEmpleado.NOMBRE = oEmpleadoCLS.nombre;
+                oEmpleado.APPATERNO = oEmpleadoCLS.apPaterno;
+                oEmpleado.APMATERNO = oEmpleadoCLS.apMaterno;
+                oEmpleado.FECHACONTRATO = oEmpleadoCLS.fechaContrato;
+                oEmpleado.SUELDO = oEmpleadoCLS.sueldo;
+                oEmpleado.IIDTIPOUSUARIO = oEmpleadoCLS.iidTipoUsuario;
+                oEmpleado.IIDTIPOCONTRATO = oEmpleadoCLS.iidtipoContrato;
+                oEmpleado.IIDSEXO = oEmpleadoCLS.iidSexo;
+                oEmpleado.BHABILITADO = 1;
 
-
+                bd.Empleado.Add(oEmpleado);
+                bd.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        
         public ActionResult Agregar()
         {
             listarCombos();
