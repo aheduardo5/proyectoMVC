@@ -33,6 +33,11 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
             return View();
         }
 
+        public ActionResult Regresar()
+        {
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Editar(int id) 
         {
             MarcaCLS oMarcaCLS = new MarcaCLS();
