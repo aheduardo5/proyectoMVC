@@ -1,0 +1,68 @@
+﻿@using MiPrimeraAplicacionConEntityFramework.Models
+@model ClienteCLS
+@{
+    ViewBag.Title = "Editar";
+    List<SelectListItem> listaSexo = (List<SelectListItem>)ViewBag.lista;
+
+}
+
+<h2>Editar Cliente</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Editar", "Cliente", FormMethod.Post))
+        {
+            <div>
+                @Html.LabelFor(p => p.iidcliente, new { @class = "mt-3" })
+                @Html.TextBoxFor(p => p.iidcliente, new { @class = "form-control", disabled = "true"}) <!--Utilizar textfor te ayudara a que se rellene todo tu modelo-->
+                @Html.ValidationMessage("iidcliente", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.nombre, new { @class = "mt-3" })
+                @Html.TextBoxFor(p => p.nombre, new { @class = "form-control", required = "required" }) <!--Utilizar textfor te ayudara a que se rellene todo tu modelo-->
+                @Html.ValidationMessage("nombre", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.appaterno, new { @class = "mt-3" })
+                @Html.TextBoxFor(p => p.appaterno, new { @class = "form-control"}) <!--Utilizar textfor te ayudara a que se rellene todo tu modelo-->
+                @Html.ValidationMessage("appaterno", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.apmaterno, new { @class = "mt-3" })
+                @Html.TextBoxFor(p => p.apmaterno, new { @class = "form-control" }) <!--Utilizar textfor te ayudara a que se rellene todo tu modelo-->
+                @Html.ValidationMessage("apmaterno", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.email, new { @class = "mt-3" })
+                @Html.TextBoxFor(p => p.email, new { @class = "form-control" }) <!--Utilizar textfor te ayudara a que se rellene todo tu modelo-->
+                @Html.ValidationMessage("email", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.direccion)
+                @Html.TextBoxFor(p => p.direccion, new { @class = "form-control" })
+                @Html.ValidationMessage("direccion", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.iidsexo)
+                @Html.DropDownList("iidsexo", listaSexo, null, new { @class = "form-control" })
+                @Html.ValidationMessage("iidsexo", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.telefonocelular)
+                @Html.TextBoxFor(p => p.telefonocelular, new { @class = "form-control" })
+                @Html.ValidationMessage("telefonocelular", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.telefonofijo)
+                @Html.TextBoxFor(p => p.telefonofijo, new { @class = "form-control" })
+                @Html.ValidationMessage("telefonofijo", new { @class = "text-danger" })
+            </div>
+
+            <br />
+            <div class="d-flex flex-column flex-sm-row">
+                <input type="submit" class="btn btn-sm btn-primary" value="Guardar" />
+                @Html.ActionLink(" ", "Regresar", "Cliente", new { @class = "btn btn-sm btn-primary bi bi-house-door-fill my-2 my-sm-0 mx-sm-2" })
+            </div>
+        }
+    </div>
+</div>

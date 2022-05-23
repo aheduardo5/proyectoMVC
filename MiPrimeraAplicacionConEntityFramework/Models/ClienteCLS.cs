@@ -28,6 +28,7 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
         [StringLength(200, ErrorMessage = "Solamente se permiten 200 caracteres")]
         public string email { get; set; }
         [Display(Name = "Direccion")]
+        [DataType(DataType.MultilineText)]
         [Required]
         [StringLength(200, ErrorMessage = "Solamente se permiten 200 caracteres")]
         public string direccion { get; set; }

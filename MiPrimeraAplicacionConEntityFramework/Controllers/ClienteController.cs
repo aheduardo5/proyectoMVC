@@ -83,5 +83,31 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
             return RedirectToAction("Index");
         }
 
+        public ActionResult Editar(int id)
+        {
+            llenarSexo();
+            ViewBag.lista = listaSexo;
+            ClienteCLS oClienteCLS = new ClienteCLS();
+            using (var bd = new BDPasajeEntities())
+            {
+                Cliente oCLiente = bd.Cliente.Where(p => p.IIDCLIENTE.Equals(id)).First();
+                oClienteCLS.iidcliente = oCLiente.IIDCLIENTE;
+                oClienteCLS.nombre = oCLiente.NOMBRE;
+                oClienteCLS.appaterno = oCLiente.APPATERNO;
+                oClienteCLS.apmaterno = oCLiente.APMATERNO;
+                oClienteCLS.email = oCLiente.EMAIL;
+                oClienteCLS.direccion = oCLiente.DIRECCION;
+                oClienteCLS.iidsexo = (int)oCLiente.IIDSEXO;
+                oClienteCLS.telefonofijo = oCLiente.TELEFONOFIJO;
+                oClienteCLS.telefonocelular = oCLiente.TELEFONOCELULAR;
+            }
+            return View(oClienteCLS);
+        }
+
+        public  ActionResult Regresar()
+        {
+            return RedirectToAction("Index");
+        }
+
     }
 }
