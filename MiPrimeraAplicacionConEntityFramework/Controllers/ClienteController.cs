@@ -90,16 +90,16 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
             ClienteCLS oClienteCLS = new ClienteCLS();
             using (var bd = new BDPasajeEntities())
             {
-                Cliente oCLiente = bd.Cliente.Where(p => p.IIDCLIENTE.Equals(id)).First();
-                oClienteCLS.iidcliente = oCLiente.IIDCLIENTE;
-                oClienteCLS.nombre = oCLiente.NOMBRE;
-                oClienteCLS.appaterno = oCLiente.APPATERNO;
-                oClienteCLS.apmaterno = oCLiente.APMATERNO;
-                oClienteCLS.email = oCLiente.EMAIL;
-                oClienteCLS.direccion = oCLiente.DIRECCION;
-                oClienteCLS.iidsexo = (int)oCLiente.IIDSEXO;
-                oClienteCLS.telefonofijo = oCLiente.TELEFONOFIJO;
-                oClienteCLS.telefonocelular = oCLiente.TELEFONOCELULAR;
+                Cliente oCliente = bd.Cliente.Where(p => p.IIDCLIENTE.Equals(id)).First();
+                oClienteCLS.iidcliente = oCliente.IIDCLIENTE;
+                oClienteCLS.nombre = oCliente.NOMBRE;
+                oClienteCLS.appaterno = oCliente.APPATERNO;
+                oClienteCLS.apmaterno = oCliente.APMATERNO;
+                oClienteCLS.email = oCliente.EMAIL;
+                oClienteCLS.direccion = oCliente.DIRECCION;
+                oClienteCLS.iidsexo = (int)oCliente.IIDSEXO;
+                oClienteCLS.telefonofijo = oCliente.TELEFONOFIJO;
+                oClienteCLS.telefonocelular = oCliente.TELEFONOCELULAR;
             }
             return View(oClienteCLS);
         }
