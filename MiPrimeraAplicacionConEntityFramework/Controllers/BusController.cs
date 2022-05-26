@@ -9,6 +9,86 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
 {
     public class BusController : Controller
     {
+        public void listarSucursal()
+        {
+            List<SelectListItem> lista;
+            using (var bd = new BDPasajeEntities())
+            {
+                lista = (from sucursal in bd.Sucursal
+                         where sucursal.BHABILITADO == 1
+                         select new SelectListItem
+                         {
+                             Text = sucursal.NOMBRE,
+                             Value = sucursal.IIDSUCURSAL.ToString()
+                         }).ToList();
+                lista.Insert(0, new SelectListItem { Text = "-- Seleccionar --", Value = "" });
+                ViewBag.listaSucursal = lista;
+            }
+        }
+
+        public void listarTipoBus()
+        {
+            List<SelectListItem> lista;
+            using (var bd = new BDPasajeEntities())
+            {
+                lista = (from tipoBus in bd.TipoBus
+                         where tipoBus.BHABILITADO == 1
+                         select new SelectListItem
+                         {
+                             Text = tipoBus.NOMBRE,
+                             Value = tipoBus.IIDTIPOBUS.ToString()
+                         }).ToList();
+                lista.Insert(0, new SelectListItem { Text = "-- Selecionar --", Value = "" });
+                ViewBag.listaTipoBus = lista;
+            }
+        }
+        public void listarTipoModelo()
+        {
+            List<SelectListItem> lista;
+            using (var bd = new BDPasajeEntities())
+            {
+                lista = (from tipoModelo in bd.Modelo
+                         where tipoModelo.BHABILITADO == 1
+                         select new SelectListItem
+                         {
+                             Text = tipoModelo.NOMBRE,
+                             Value = tipoModelo.IIDMODELO.ToString()
+                         }).ToList();
+                lista.Insert(0, new SelectListItem { Text = "-- Seleccionar --", Value = "" });
+                ViewBag.listaTipoModelo = lista;
+            }
+        }
+
+        public void listarMarca()
+        {
+            List<SelectListItem> lista;
+            using (var bd = new BDPasajeEntities())
+            {
+                lista = (from marca in bd.Marca
+                         where marca.BHABILITADO == 1
+                         select new SelectListItem
+                         {
+                             Text = marca.NOMBRE,
+                             Value = marca.IIDMARCA.ToString()
+                         }).ToList();
+                lista.Insert(0, new SelectListItem { Text = "-- Seleccionar --", Value = "" });
+                ViewBag.listaMarca = lista;
+            }
+        }
+
+        public void listarCombos()
+        {
+            listarMarca();
+            listarTipoModelo();
+            listarTipoBus();
+            listarSucursal();
+
+        }
+        public ActionResult Agregar()
+        {
+            listarCombos();
+            return View();
+        }
         // GET: Bus
         public ActionResult Index()
         {
