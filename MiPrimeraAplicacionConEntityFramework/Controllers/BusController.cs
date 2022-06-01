@@ -89,6 +89,58 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
             listarCombos();
             return View();
         }
+        [HttpPost]
+        public ActionResult Agregar(BusCLS oBusCLS)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                listarCombos();
+                return View(oBusCLS);
+            }
+
+            using (var bd = new BDPasajeEntities())
+            {
+                Bus oBus = new Bus();
+                oBus.IIDSUCURSAL = oBusCLS.iidSucursal;
+                oBus.IIDTIPOBUS = oBusCLS.iidTipoBus;
+                oBus.PLACA = oBusCLS.placa;
+                oBus.FECHACOMPRA = oBusCLS.fechaCompra;
+                oBus.IIDMODELO = oBusCLS.iidModelo;
+                oBus.DESCRIPCION = oBusCLS.descripcion;
+                oBus.OBSERVACION = oBusCLS.observacion;
+                oBus.IIDMARCA = oBusCLS.iidMarca;
+                oBus.BHABILITADO = 1;
+
+                bd.Bus.Add(oBus);
+                bd.SaveChanges();
+            }
+
+
+            return RedirectToAction("Index");
+
+
+        }
+
+        public ActionResult Editar(int id)
+        {
+            listarCombos();
+            BusCLS oBusClS = new BusCLS();
+            using (var bd = new BDPasajeEntities())
+            {
+                Bus oBus = bd.Bus.Where(p => p.IIDBUS.Equals(id)).First();
+                oBusClS.iidBus = oBus.IIDBUS;
+                oBusClS.iidSucursal = (int)oBus.IIDSUCURSAL;
+                oBusClS.iidTipoBus = (int)oBus.IIDTIPOBUS;
+                oBusClS.placa = oBus.PLACA;
+                oBusClS.fechaCompra = (DateTime)oBus.FECHACOMPRA;
+                oBusClS.iidModelo = (int)oBus.IIDMODELO;
+                oBusClS.descripcion = oBus.DESCRIPCION;
+                oBusClS.observacion = oBus.OBSERVACION;
+                oBusClS.iidMarca = (int)oBus.IIDMARCA;
+            }
+                return View(oBusClS);
+        }
         // GET: Bus
         public ActionResult Index()
         {
@@ -114,5 +166,7 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
             }
             return View(listaBus);
         }
+
+
     }
 }

@@ -42,7 +42,6 @@ namespace MiPrimeraAplicacionConEntityFramework.Models
         [StringLength(200, ErrorMessage = "Longitud Maxima de 200 caracteres")]
         public string observacion { get; set; }
         [Display(Name = "Nombre Marca")]
-        [StringLength(200, ErrorMessage ="Longitud Maxima de 200 caracteres")]
         [Required]
         public int iidMarca { get; set; }
 
