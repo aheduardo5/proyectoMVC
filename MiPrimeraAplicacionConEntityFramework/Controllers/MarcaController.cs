@@ -38,7 +38,7 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Editar(int id) 
+        public ActionResult Editar(int id)
         {
             MarcaCLS oMarcaCLS = new MarcaCLS();
             using (var bd = new BDPasajeEntities())
@@ -48,8 +48,11 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
                 oMarcaCLS.nombre = oMarca.NOMBRE;
                 oMarcaCLS.descripcion = oMarca.DESCRIPCION;
             }
-                return View(oMarcaCLS);
+            return View(oMarcaCLS);
         }
+
+
+
 
         [HttpPost] // Hace la insercion de datos
         public ActionResult Agregar(MarcaCLS oMarcaCLS) //Se agrega el modelo y nombre del modelo
@@ -72,6 +75,26 @@ namespace MiPrimeraAplicacionConEntityFramework.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult Editar(MarcaCLS oMarcaCLS)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(oMarcaCLS);
+            }
+            using (var bd = new BDPasajeEntities())
+            {
+                int idMarca = oMarcaCLS.iidmarca;
+                Marca oMarca = bd.Marca.Where(p => p.IIDMARCA.Equals(idMarca)).First();
+                oMarca.NOMBRE = oMarcaCLS.nombre;
+                oMarca.DESCRIPCION = oMarcaCLS.descripcion;
+                bd.SaveChanges();
+            }
+            return RedirectToAction("Index");
+
+        }
+
     }
 
 }

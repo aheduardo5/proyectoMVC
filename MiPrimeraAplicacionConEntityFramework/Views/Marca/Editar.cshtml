@@ -4,14 +4,14 @@
     ViewBag.Title = "Editar";
 }
 
-<h2>Editar</h2>
+<h2>Editar Marca</h2>
 <div class="row">
     <div class="col-md-6">
-        @using (Html.BeginForm("Editar", "Marca", FormMethod.Post))
+        @using (Html.BeginForm("Editar", "Marca", FormMethod.Post, new { @id = "formEditar" }))
         {
             <div>
                 @Html.LabelFor(p => p.iidmarca, new { @class = "mt-3" })
-                @Html.TextBoxFor(p => p.iidmarca, new { @class = "form-control", disabled = "true" }) <!--Utilizar textfor te ayudara a que se rellene todo tu modelo-->
+                @Html.TextBoxFor(p => p.iidmarca, new { @class = "form-control", @readOnly = true }) <!--Utilizar textfor te ayudara a que se rellene todo tu modelo-->
                 @Html.ValidationMessage("iidmarca", new { @class = "text-danger" })
             </div>
             <div>
@@ -28,7 +28,20 @@
             <div class="d-flex flex-column flex-sm-row">
                 <input type="submit" class="btn btn-sm btn-primary" value="Guardar" />
                 @Html.ActionLink(" ", "Regresar", "Marca", new { @class = "btn btn-sm btn-primary bi bi-house-door-fill my-2 my-sm-0 mx-sm-2" })
+                @Html.ActionLink("Limpiar Datos", null, "Marca", new { @class = "btn btn-sm btn-danger"})
             </div>
         }
     </div>
 </div>
+
+<script>
+    let formEditar = document.getElementById("formEditar");
+    formEditar.onsubmit = e => {
+        e.preventDefault();
+        if (confirm("Deseas Guardar Los Cambios?") == 1) {
+            formEditar.submit();
+        }
+
+        //Poner en todos los formularios esta condicion, para ir practicando
+    }
+</script>
