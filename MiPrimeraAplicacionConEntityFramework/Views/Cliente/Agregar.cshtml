@@ -9,7 +9,7 @@
 <h2>Agregar Cliente</h2>
 <div class="row card p-3">
 
-    @using (Html.BeginForm("Agregar", "Cliente", FormMethod.Post))
+    @using (Html.BeginForm("Agregar", "Cliente", FormMethod.Post, new { @id= "formAddClient" }))
     {
         <div class="row">
             <div class="col-md-4">
@@ -65,9 +65,41 @@
         </div>
         <br />
         <div>
-            <input type="submit" class="btn btn-primary mb-3" value="Agregar" />
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Guardar
+            </button>
+
         </div>
     }
 
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Desea guardar los cambios?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Agregar()">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    Agregar = () => {
+        console.log("Inside")
+        let formAddClient = document.getElementById("formAddClient");
+        formAddClient.submit();
+    }
+
+
+</script>
